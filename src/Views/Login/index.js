@@ -43,7 +43,7 @@ const LoginFn = () =>{
     <div className="App">
         <Row justify={'center'}>
             <Col span={6} className={'mt-12'}>
-                    <div className="flex flex-col justify-center items-center mt-8">
+                    <div className="flex flex-col justify-center items-center mt-20">
                         <h1 className={'text-2xl'}>Login</h1> 
                             <Input size="large" placeholder="Username"
                             className={'mt-4'} value={username} onChange={(e)=>{setError('');setUsername(e.target.value)}} /> 

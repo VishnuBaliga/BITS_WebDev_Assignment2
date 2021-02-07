@@ -5,7 +5,7 @@ const RegisteredUsers = [
         role: 'faculty',
         email: 'bits-faculty1@bits-pilani.com',
         dob: '23/10/1982',
-        password:'Password123'
+        password:'Password123*#'
     },
     {
         user_id: 2,
@@ -13,7 +13,7 @@ const RegisteredUsers = [
         role: 'faculty',
         email: 'bits-faculty2@bits-pilani.com',
         dob: '3/03/1985',
-        password:'Password123'
+        password:'Password123*#'
     },
     {
         user_id: 3,
@@ -21,7 +21,7 @@ const RegisteredUsers = [
         role: 'student',
         email: 'student-1@bits-pilani.com',
         dob: '13/04/1996',
-        password:'Password123'
+        password:'Password123*#'
     },
     {
         user_id: 4,
@@ -29,7 +29,7 @@ const RegisteredUsers = [
         role: 'student',
         email: 'student-1@bits-pilani.com',
         dob: '19/08/1992',
-        password:'Password123'
+        password:'Password123*#'
     },
 
 ];
@@ -75,25 +75,25 @@ const coursesAssigned = [
         {
             name:'Quiz - 1',
             type:'quiz',
-            date:'10-Feb-2021',
+            date:'10/02/2021 09:00 pm',
             totalMarks: 10
         },
         {
             name:'Quiz - 2',
             type:'quiz',
-            date:'20-Feb-2021',
+            date:'20/02/2021 08:00 pm',
             totalMarks: 10
         },
         {
             name:'Assignment - 1',
             type:'assignment',
-            date:'25-Feb-2021',
+            date:'25/02/2021 07:00 pm',
             totalMarks: 20
         },
         {
             name:'Assignment - 2',
             type:'assignment',
-            date:'25-Feb-2021',
+            date:'25/02/2021 09:00 pm',
             totalMarks: 20
         },
     ],
@@ -157,19 +157,19 @@ const coursesAssigned = [
           {
               name:'Quiz - 1',
               type:'quiz',
-              date:'10-Mar-2021',
+              date:'10/03/2021 09:00 pm',
               totalMarks: 10
           },
           {
               name:'Quiz - 2',
               type:'quiz',
-              date:'20-Mar-2021',
+              date:'20/03/2021 08:00 pm',
               totalMarks: 10
           },
           {
               name:'Assignment - 1',
               type:'assignment',
-              date:'25-Mar-2021',
+              date:'25/03/2021 09:00 pm',
               totalMarks: 20
           },
       ],

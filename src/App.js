@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import 'antd/dist/antd.css'; 
+import './App.css'; 
 import SignUp from './Views/Signup';
 import Login from './Views/Login';
 import FacultyDashboard from './Views/Dashboard/Faculty';

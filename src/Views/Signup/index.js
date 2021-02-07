@@ -1,5 +1,5 @@
 import React, { userEffect, useState } from "react";
-import { Input, Space, Row, Col, Button, DatePicker, Select, Tag } from 'antd';
+import { Input, Space, Row, Col, Button, DatePicker, Select, Tag, message } from 'antd';
 import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 const { Option } = Select;
@@ -13,6 +13,7 @@ const [password, setPassword] = useState('');
 const [passwordHint, setPasswordHint] = useState(false);
 const [dob, setDob] = useState('');
 const [role, setRole] = useState('');
+const [loading, setLoading] = useState(false);
 
     const history = useHistory();
     const routeChange = (url) => {
@@ -24,24 +25,17 @@ const [role, setRole] = useState('');
       return re.test(String(email).toLowerCase());
   }
     const validatePassword = (password) => {
-      const re = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/;
-      return re.test(String(password).toLowerCase());
+      const re = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+      return re.test(String(password));
   }
 
      const onEmailChange = (email) => {
       setError('');
-      if(!validateEmail(email)){
-        setError('Please enter valid email ID'); 
-      } 
       setEmail(email) 
     }
 
      const onPasswordChange = (password) => {
-      setError('');
-      console.log("validatePassword",validatePassword(password));
-      if(!validatePassword(password)){
-        setError('Password entry does not meet criteria'); 
-      } 
+      setError(''); 
       setPassword(password) 
     }
 
@@ -57,18 +51,32 @@ const [role, setRole] = useState('');
 
     const RegisterFn = () =>{
       console.log(name, email, password, dob,role);
+      setError('');  
       if(name&& email&& password&& dob&&role){
-        console.log("success registeration-->>",name, email, password, dob,role); 
+        let isSuccess = true;
+       
+        if(!validatePassword(password)){
+          isSuccess = false;
+          setError('Password entry does not meet criteria'); 
+        } 
+        if(!validateEmail(email)){
+          isSuccess = false;
+          setError('Please enter valid email ID'); 
+        } 
+        if(isSuccess){
+          setLoading(true);
+          setTimeout(() => {
+            message.success('Registeration successful! Please login to continue.');
+          }, 2000); 
+          setTimeout(() => {
+            setLoading(false); 
+            routeChange('/login'); 
+          }, 2000); 
+        }
       }
-      // if(!_.isEmpty(username)&& !_.isEmpty(password)){
-      //     let isAuthCheck = false; 
-      //     if(!isAuthCheck){
-      //         setError('Username or Password doesn’t match '); 
-      //     }
-      // }
-      // else{
-      //     setError('Please enter valid Username and Password');
-      // }
+      else{
+        setError('Please fill all the fields in the form');  
+      } 
   }
 
   return (
@@ -114,6 +122,7 @@ const [role, setRole] = useState('');
                             type="primary"
                             className={'mt-4'}
                             onClick={RegisterFn}
+                            loading={loading}
                             >Register</Button>  
                             <h4 className={'mt-6'}>Already have an account? <a  onClick={() => routeChange('/login')}> Login</a></h4>
                     </div>

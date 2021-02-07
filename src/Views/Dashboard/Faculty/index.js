@@ -1,8 +1,9 @@
 import React, { userEffect, useState } from "react";
-import { Table, Row, Col,Drawer, Button } from 'antd';
+import { Table, Row, Col,Drawer, Button, Form, Input, Modal, message, Select, DatePicker } from 'antd';
 import {coursesAssigned} from '../../../DataStore/';
 import { PlusOutlined } from '@ant-design/icons'; 
-
+import moment from 'moment';
+const { Option } = Select;
 
 function FacultyDashboard() {
   const [studentsDrawerVisible, setStudentsDrawerVisible] = useState(false);
@@ -11,6 +12,12 @@ function FacultyDashboard() {
   const [studentsList, setStudentsList] = useState([]);
   const [moduleList, setModuleList] = useState([]);
   const [evaluationsList, setEvaluationsList] = useState([]);
+
+
+  const [showModuleModal, setShowModuleModal] = useState(false);
+  const [showEvalModal, setShowEvalModal] = useState(false);
+  const [form] = Form.useForm();
+
 
   const columns = [
     {
@@ -51,8 +58,22 @@ function FacultyDashboard() {
       }}>(View Modules)</a></span>
     },
   ];
-  
-  console.log("studentsList",studentsList);
+   
+
+  const addEvalCompFn = (values) => {  
+    const newVal = {...values, date: moment(values.date).format('DD/MM/YYYY hh:mm a')} 
+    setShowEvalModal(false);
+    const newEvalComp = [...evaluationsList,newVal ];
+    setEvaluationsList(newEvalComp);
+    message.success('New Evaluvation Component Added Successfully!');
+  };
+
+  const AddModuleFn = (values) => {   
+    setShowModuleModal(false);
+    const newMod = [...moduleList,values];
+    setModuleList(newMod);
+    message.success('New Module Added Successfully!');
+  };
 
   return (
     <div className="">
@@ -102,6 +123,13 @@ function FacultyDashboard() {
             })}
             </Col>
         </Row> 
+        <Row justify={'end'}>
+            <Col span={24} className={'mt-8'}>
+              <div className={'flex justify-end'}>
+                <Button size="large" type="primary" icon={<PlusOutlined />} className={'mt-4'} onClick={()=>setShowModuleModal(true)}>Add new</Button>   
+              </div>
+            </Col>
+        </Row>
         </Drawer>
 
         <Drawer
@@ -116,7 +144,7 @@ function FacultyDashboard() {
               return (<div className={'flex flex-col py-2 mb-1 border-gray-200'} style={{borderBottomWidth:'thin'}} key={index}> 
                   <p className={'m-0 font-semibold text-gray-900 text-lg'}>{evalutation.name}</p>   
                   <div className={'flex items-center justify-between'} >
-                    <p className={'m-0 font-semibold text-gray-500'}>{`Date: ${evalutation.date}`}</p>    
+                    <p className={'m-0 font-semibold text-gray-500'}>{`Date & Time: ${evalutation.date}`}</p>    
                     <p className={'m-0 ml-1 font-semibold text-gray-500'}>{`Total Marks: ${evalutation.totalMarks}`}</p>    
                   </div>
               </div>)
@@ -126,11 +154,98 @@ function FacultyDashboard() {
         <Row justify={'end'}>
             <Col span={24} className={'mt-8'}>
               <div className={'flex justify-end'}>
-                <Button size="large" type="primary" icon={<PlusOutlined />} className={'mt-4'}>Add new</Button>   
+                <Button size="large" type="primary" icon={<PlusOutlined />} className={'mt-4'} onClick={()=>setShowEvalModal(true)}>Add new</Button>   
               </div>
             </Col>
         </Row>
         </Drawer>
+
+        <Modal title="Add Evaluation component" onCancel={()=>{setShowEvalModal(false)}} visible={showEvalModal} footer={false}>
+
+        <Row justify={'center'}>
+            <Col span={24} className={'mt-8'}>
+
+            <Form 
+                name="eval_comp" 
+                onFinish={addEvalCompFn} 
+              >
+                <Form.Item 
+                  name={"name"}
+                  rules={[{ required: true, message: 'Please input Evaluvation name!' }]}
+                >
+                  <Input size={'large'}  placeholder={'Evalutaion Name'} />
+                </Form.Item>   
+                <Form.Item 
+                  name={"type"}
+                  rules={[{ required: true, message: 'Please input evaluvation type!' }]}
+                > 
+                  <Select placeholder={'Evaluvation type'} size="large">
+                              <Option value="quiz">Quiz</Option>
+                              <Option value="assignment">Assignment</Option> 
+                            </Select>
+                </Form.Item>   
+                <Form.Item 
+                  name={"date"} 
+                  rules={[{ required: true, message: 'Please input date' }]}
+                >
+                  <DatePicker showTime format={'DD/MM/YYYY hh:mm a'} size="large" placeholder="Date and Time" className={'w-full'} />
+                </Form.Item>   
+                <Form.Item 
+                  name={"totalMarks"}
+                  rules={[{ required: true, message: 'Please input total marks' }]}
+                >
+                  <Input size={'large'} placeholder={'Total Marks'}/>
+                </Form.Item>   
+
+                <Form.Item>
+                  <Button type="primary" htmlType="submit">
+                    Add
+                  </Button>
+                </Form.Item>
+
+              </Form>
+
+            </Col>
+        </Row>
+
+            
+      </Modal>
+        <Modal title="Add New Module" onCancel={()=>{ setShowModuleModal(false)}} visible={showModuleModal} footer={false}>
+
+        <Row justify={'center'}>
+            <Col span={24} className={'mt-8'}>
+
+            <Form 
+                name="add_module" 
+                onFinish={AddModuleFn} 
+              >
+                <Form.Item 
+                  name={"name"}
+                  rules={[{ required: true, message: 'Please input module name!' }]}
+                >
+                  <Input size={'large'}  placeholder={'Module Name'} />
+                </Form.Item>  
+                <Form.Item 
+                  name={"desc"}
+                  rules={[{ required: true, message: 'Please input module description!' }]}
+                >
+                  <Input size={'large'}  placeholder={'Module Description'} />
+                </Form.Item>  
+
+                <Form.Item>
+                  <Button type="primary" htmlType="submit">
+                    Add
+                  </Button>
+                </Form.Item>
+
+              </Form>
+
+            </Col>
+        </Row>
+
+            
+      </Modal>
+
     </div>
   );
 }
