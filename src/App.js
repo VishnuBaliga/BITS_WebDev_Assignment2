@@ -11,12 +11,14 @@ import SignUp from './Views/Signup';
 import Login from './Views/Login';
 import FacultyDashboard from './Views/Dashboard/Faculty';
 import StudentDashboard from './Views/Dashboard/Student';
+import Home from './Views/Home';
 
 function App() {
   return (
     <div className="App">
       <Router>
           <Switch>
+            <Route exact path="/" exact name="Home page" component={Home} />
             <Route exact path="/signup" name="Signup" component={SignUp} />
             <Route exact path="/Login" name="Login" component={Login} />
             <Route exact path="/faculty-dashboard" name="faculty-dashboard" component={FacultyDashboard} />
