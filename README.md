@@ -14,13 +14,13 @@
 5. [Netlify](https://www.netlify.com/) (Deployment)
 
 
-**Development:**
+### Development:
 
 **Execution instructions:**
 
 ### `npm install`
 
-Install the dependencies for the project.
+Installs the dependencies for the project.
 
 ### `npm run start`
 
@@ -39,5 +39,15 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+### Screenshots
+
+![Home Page](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/home-page.png)
+![Login Page](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/login.png)
+![Registeration Page](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/register.png)
+![Faculty Dashboard](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/faculty-dashboard.png)
+![Students Enrolled](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/students-enrolled.png)
+![Add Evaluvations](https://raw.githubusercontent.com/VishnuBaliga/BITS_WebDev_Assignment2/main/public/images/screenshots/add-evaluvation-component.png)
 
 
