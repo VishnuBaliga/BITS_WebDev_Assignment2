@@ -1,7 +1,7 @@
 # Assignment 2 - Frontend development with React
 ### Author: Vishnu Baliga
 
-**Live Preview** : [https://assignment2-vishnubaliga.netlify.app/](https://assignment2-vishnubaliga.netlify.app/)
+**Live Preview** : [https://assignment2-vishnubaliga.netlify.app/](https://assignment2-vishnubaliga.netlify.app/) (To access Faculty dashboard, Login with these credentials. username:`bits-faculty1@bits-pilani.com`, password: `Password123*#`)
 
 **Code Base** : [https://github.com/VishnuBaliga/BITS\_WebDev\_Assignment2](https://github.com/VishnuBaliga/BITS_WebDev_Assignment2)
 
