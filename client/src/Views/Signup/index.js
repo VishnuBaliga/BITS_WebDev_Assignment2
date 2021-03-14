@@ -4,7 +4,7 @@ import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icon
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 const { Option } = Select;
-const SignupURL = `https://balis-web-services.herokuapp.com/auth/register/`;
+const SignupURL = `https://vishnu-baliga-web-services.herokuapp.com//auth/register/`;
 
 function Signup() {
 

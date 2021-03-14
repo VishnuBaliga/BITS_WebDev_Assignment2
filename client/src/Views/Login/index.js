@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { RegisteredUsers } from '../../DataStore';
 import _ from 'lodash';
 import axios from 'axios';
-const LoginURL = `https://balis-web-services.herokuapp.com/auth/login/`;
+const LoginURL = `https://vishnu-baliga-web-services.herokuapp.com//auth/login/`;
 
 function Login() {
     const [loading, setLoading] = useState(false);
