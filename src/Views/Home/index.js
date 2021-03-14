@@ -1,13 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Row, Col, Button } from 'antd';
 import { useHistory } from 'react-router-dom';
-
+import axios from 'axios';
 
 function Home() {
     const history = useHistory();
     const routeChange = (url) => {
     history.push(url);
 };
+
+// useEffect(()=>{ 
+
+//   const  FormData = {
+//     "email": "sarath.perayam@mail.com",
+//     "password": "sarath@12345"
+//   };
+
+//   const LoginURL = `https://balis-web-services.herokuapp.com/auth/login/`;
+
+//   axios.post(LoginURL, FormData, {
+//     headers: {
+//         'Content-Type': 'application/json',
+//     }
+//   });
+
+
+// },[])
 
   return (
     <div className="App">
